@@ -79,6 +79,15 @@ class Pet:
             return False
         return self.name == other.name and self.species == other.species
 
+    def to_dict(self):
+        return {
+            'name': self.name,
+            'species': self.species,
+            'age': self.age,
+            'owner': self.owner,
+            'is_vaccinated': self.is_vaccinated
+        }
+
     def __str__(self):
         return (f"Pet(name: {self.name},"
                 f" species: {self.species},"

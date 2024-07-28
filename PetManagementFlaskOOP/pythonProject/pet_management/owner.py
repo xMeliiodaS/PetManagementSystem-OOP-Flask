@@ -4,6 +4,14 @@ class Owner:
         self._phone_number = phone_number
         self._pets = []
 
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def phone_number(self):
+        return self._phone_number
+
     def add_pet(self, pet):
         if pet.is_vaccinated:
             self._pets.append(pet)
@@ -14,6 +22,13 @@ class Owner:
 
     def get_all_pet_names(self):
         return list(map(lambda pet: pet.name, self._pets))
+
+    def to_dict(self):
+        return {
+            'name': self._name,
+            'phone_number': self._phone_number,
+            'pets': [pet.to_dict() for pet in self._pets]
+        }
 
     def __str__(self):
         return (f"Name: {self._name},"
