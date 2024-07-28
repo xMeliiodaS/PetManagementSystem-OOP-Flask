@@ -5,7 +5,8 @@ class Owner:
         self._pets = []
 
     def add_pet(self, pet):
-        self._pets.append(pet)
+        if pet.is_vaccinated:
+            self._pets.append(pet)
 
     def remove_pet(self, pet):
         if pet in self._pets:

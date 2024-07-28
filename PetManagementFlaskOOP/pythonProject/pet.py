@@ -1,4 +1,6 @@
 class Pet:
+    total_pets = 0
+
     def __init__(self, name, species, age, owner, vaccinated):
         self._name = None
         self._species = None
@@ -11,6 +13,18 @@ class Pet:
         self.age = age
         self.owner = owner
         self.is_vaccinated = vaccinated
+
+        Pet.total_pets += 1
+
+    @staticmethod
+    def total_pets_count():
+        return Pet.total_pets
+
+    def mark_pet_as_vaccinated(self):
+        self.is_vaccinated = True
+
+    def human_age_to_pet(self):
+        return self.age * 7
 
     @property
     def name(self):
