@@ -10,6 +10,7 @@ data = load_data()
 def home_page():
     return render_template('home_page.html')
 
+
 @app.route('/owner')
 def owner_page():
     return render_template('owner_page.html')
