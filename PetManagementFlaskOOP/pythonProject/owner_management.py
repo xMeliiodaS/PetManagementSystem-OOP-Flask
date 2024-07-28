@@ -54,6 +54,6 @@ class OwnerManagement:
         try:
             with open(self.filename, 'r') as file:
                 owner_dicts = json.load(file)
-                self.owners = [Owner(**owner_dict) for owner_dict in owner_dicts]
+                self.owners = [Owner(owner_dict['name'], owner_dict['phone_number']) for owner_dict in owner_dicts]
         except FileNotFoundError:
             self.owners = []
