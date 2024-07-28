@@ -12,8 +12,10 @@ class Owner:
         if pet in self._pets:
             self._pets.remove(pet)
 
+    def get_all_pet_names(self):
+        return list(map(lambda pet: pet.name, self._pets))
+
     def __str__(self):
-        pet_names = list(map(lambda pet: pet.name, self._pets))
         return (f"Name: {self._name},"
                 f"Phone number: {self._phone_number}"
-                f"Pet's names': {pet_names}")
+                f"Pet's names': {self.get_all_pet_names()}")

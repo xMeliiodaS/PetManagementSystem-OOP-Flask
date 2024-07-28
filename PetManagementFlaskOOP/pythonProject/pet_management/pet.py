@@ -16,16 +16,6 @@ class Pet:
 
         Pet.total_pets += 1
 
-    @staticmethod
-    def total_pets_count():
-        return Pet.total_pets
-
-    def mark_pet_as_vaccinated(self):
-        self.is_vaccinated = True
-
-    def human_age_to_pet(self):
-        return self.age * 7
-
     @property
     def name(self):
         return self._name
@@ -73,6 +63,21 @@ class Pet:
         if not isinstance(value, bool):
             raise ValueError("Vaccinated should be a bool")
         self._is_vaccinated = value
+
+    @staticmethod
+    def total_pets_count():
+        return Pet.total_pets
+
+    def mark_pet_as_vaccinated(self):
+        self.is_vaccinated = True
+
+    def human_age_to_pet(self):
+        return self.age * 7
+
+    def __eq__(self, other):
+        if not isinstance(other, Pet):
+            return False
+        return self.name == other.name and self.species == other.species
 
     def __str__(self):
         return (f"Pet(name: {self.name},"
