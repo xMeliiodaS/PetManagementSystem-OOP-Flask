@@ -8,10 +8,15 @@
     <h1>List of all owners</h1>
     <h2>Owners lists</h2>
         <div>
-            <span>Owner 1</span>
-            <span>123-456-7890</span>
-            <button>Add Pet</button>
-            <button>Pets list</button>
+            <ul>
+                {% for owner in owners %}
+                <li>
+                    {{ owner.name }} {{ owner.phone_number }}
+                    <a href="{{ url_for('add_pet', owner_phone_number=owner.phone_number) }}">Add Pet</a>
+                    <a href="{{ url_for('pets_list', owner_phone_number=owner.phone_number) }}">Pet List</a>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     <button>Add owner</button>
 </body>
