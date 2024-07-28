@@ -1,8 +1,8 @@
 class Owner:
-    def __init__(self, name, phone_number, pets):
+    def __init__(self, name, phone_number):
         self._name = name
         self._phone_number = phone_number
-        self._pets = pets
+        self._pets = []
 
     def add_pet(self, pet):
         self._pets.append(pet)
