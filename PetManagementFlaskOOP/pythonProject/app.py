@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 
-# from load_json import load_data, save_data
+from load_json import load_data, save_data
 
 app = Flask(__name__)
-# data = load_data()
+data = load_data()
 
 
 @app.route('/')
