@@ -15,4 +15,4 @@ class Owner:
         pet_names = list(map(lambda pet: pet.name, self._pets))
         return (f"Name: {self._name},"
                 f"Phone number: {self._phone_number}"
-                f"Pets: {pet_names}")
+                f"Pet's names': {pet_names}")
