@@ -50,6 +50,8 @@ class Pet:
 
     @vaccinated.setter
     def vaccinated(self, value):
+        if not isinstance(value, bool):
+            raise ValueError("Vaccinated should be a bool")
         self._vaccinated = value
 
     def __str__(self):
