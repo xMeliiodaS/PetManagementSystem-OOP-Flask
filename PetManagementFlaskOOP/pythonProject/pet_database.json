@@ -1,22 +1,45 @@
 [
-  {
-    "name": "Eren",
-    "phone_number": "0504789072",
-    "pets": []
-  },
-  {
-    "name": "dafdasfsda",
-    "phone_number": "453453",
-    "pets": []
-  },
-  {
-    "name": "Bahaa",
-    "phone_number": "4756345",
-    "pets": []
-  },
-  {
-    "name": "Try",
-    "phone_number": "1",
-    "pets": []
-  }
+    {
+        "name": "Eren",
+        "phone_number": "0504789072",
+        "pets": [
+            {
+                "name": "wefr",
+                "species": "eg",
+                "age": 43,
+                "owner": "Eren",
+                "is_vaccinated": true
+            },
+            {
+                "name": "re",
+                "species": "er",
+                "age": 43,
+                "owner": "Eren",
+                "is_vaccinated": true
+            }
+        ]
+    },
+    {
+        "name": "dafdasfsda",
+        "phone_number": "453453",
+        "pets": [
+            {
+                "name": "asd",
+                "species": "aw",
+                "age": 32,
+                "owner": "dafdasfsda",
+                "is_vaccinated": true
+            }
+        ]
+    },
+    {
+        "name": "Bahaa",
+        "phone_number": "4756345",
+        "pets": []
+    },
+    {
+        "name": "Try",
+        "phone_number": "1",
+        "pets": []
+    }
 ]

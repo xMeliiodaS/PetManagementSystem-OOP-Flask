@@ -12,6 +12,10 @@ class Owner:
     def phone_number(self):
         return self._phone_number
 
+    @property
+    def pets(self):
+        return self._pets
+
     def add_pet(self, pet):
         if pet.is_vaccinated:
             self._pets.append(pet)
