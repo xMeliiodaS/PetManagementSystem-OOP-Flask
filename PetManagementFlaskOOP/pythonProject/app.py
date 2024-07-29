@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
+
+from src.classes.pet import Pet
 from src.utils.owner_management import OwnerManagement
 from src.classes.owner import Owner
 
@@ -30,10 +32,24 @@ def add_owner():
     return render_template('add_owner.html')
 
 
-@app.route('/add_pet/<owner_phone_number>')
-def add_pet(owner_phone_number):
-    # Implement the logic to add a pet to the owner
-    return f"Add pet for owner with phone number {owner_phone_number}"
+@app.route('/add_pet/<pet_owner>', methods=['GET', 'POST'])
+def add_pet(pet_owner):
+    if request.method == 'POST':
+        pet_name = request.form['name'].strip()
+        species = request.form['species'].strip()
+        age = int(request.form['age'].strip())
+        vaccinated = bool(request.form['vaccinated'].strip())
+
+        parts = pet_owner.split(',')
+        name = parts[0].split(': ')[1].strip()
+        phone = parts[1].split(': ')[1].strip()
+
+        owner = Owner(name, phone)
+
+        pet = Pet(pet_name, species, age, owner, vaccinated)
+        owner_management.add_pet_to_owner(pet, phone)
+        return redirect(url_for('owner_page'))
+    return render_template('add_pet.html', pet_owner=pet_owner)
 
 
 @app.route('/pets_list/<owner_phone_number>')

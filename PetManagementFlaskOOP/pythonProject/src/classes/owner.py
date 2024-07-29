@@ -32,5 +32,5 @@ class Owner:
 
     def __str__(self):
         return (f"Name: {self._name},"
-                f"Phone number: {self._phone_number}"
+                f"Phone number: {self._phone_number},"
                 f"Pet's names': {self.get_all_pet_names()}")

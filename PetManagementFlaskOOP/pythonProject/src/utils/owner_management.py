@@ -27,7 +27,8 @@ class OwnerManagement:
     def add_pet_to_owner(self, pet, owner_phone_number):
         for owner in self.owners:
             if owner.phone_number == owner_phone_number:
-                owner.add_pet(pet)
+                self.save_owner_pets(owner_phone_number)
+                self.save_owners()
                 break
 
     def remove_pet_from_owner(self, pet, owner_phone_number):
@@ -45,6 +46,36 @@ class OwnerManagement:
         """
         with open(self.filename, 'w') as file:
             json.dump([owner.to_dict() for owner in self.owners], file)
+
+    def save_pet(self, phone):
+        """
+        Save the current state of the library (books) to a JSON file.
+        """
+        with open(self.filename, 'w') as file:
+            json.dump([owner.to_dict() for owner in self.owners], file)
+
+    def save_owner_pets(self, owner_phone_number):
+        """
+        Save pets for a specific owner to the JSON file.
+
+        Args:
+        - owner_phone_number (str): Phone number of the owner whose pets need to be saved.
+        """
+        # Find the owner
+        for owner in self.owners:
+            if owner.phone_number == owner_phone_number:
+                owner_data = owner.to_dict()
+                # Update only the pets information in the JSON file
+                with open(self.filename, 'r+') as file:
+                    data = json.load(file)
+                    file.seek(0)  # Go back to the beginning of the file
+                    for i, item in enumerate(data):
+                        if item['phone_number'] == owner_phone_number:
+                            data[i] = owner_data
+                            break
+                    file.truncate()  # Remove any remaining data after the new data
+                    json.dump(data, file, indent=4)
+                break
 
     def load_owners(self):
         """

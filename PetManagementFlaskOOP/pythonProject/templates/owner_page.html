@@ -12,7 +12,7 @@
             {% for owner in owners %}
             <li>
                 {{ owner.name }} - {{ owner.phone_number }}
-                <a href="{{ url_for('add_pet', owner_phone_number=owner.phone_number) }}">Add Pet</a>
+                <a href="{{ url_for('add_pet', pet_owner=owner) }}">Add Pet</a>
                 <a href="{{ url_for('pets_list', owner_phone_number=owner.phone_number) }}">Pet List</a>
             </li>
             {% endfor %}

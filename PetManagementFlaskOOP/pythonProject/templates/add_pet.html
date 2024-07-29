@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add pet</title>
+</head>
+<body>
+    <h1>Add Pet for Owner: {{ pet_owner }}</h1>
+    <form action="{{ url_for('add_pet', pet_owner=pet_owner) }}" method="post">
+        Name: <input type="text" name="name"><br>
+        Species: <input type="text" name="species"><br>
+        Age: <input type="text" name="age"><br>
+        Vaccinated: <input type="text" name="vaccinated"><br>
+        <input type="submit" value="Add Pet">
+    </form>
+    <a href="{{ url_for('owner_page') }}">Back to Owners List</a>
+</body>
+</html>
