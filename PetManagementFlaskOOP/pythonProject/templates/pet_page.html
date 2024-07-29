@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pets List</title>
+</head>
+<body>
+    <h1>Pets for {{ owner.name }}</h1>
+    <div>
+        <ul>
+            {% for pet in pets %}
+            <li>
+                {{ pet.name }} - {{ pet.species }} - {{ pet.age }} years -
+                {% if pet.is_vaccinated %}Vaccinated{% else %}Not Vaccinated{% endif %}
+                <a href="{{ url_for('add_pet', pet_owner='Name: {}, Phone number: {}'.format(owner.name, owner.phone_number)) }}">Vaccinate Pet</a>
+                <a href="{{ url_for('pets_list', pet_owner='Name: {}, Phone number: {}'.format(owner.name, owner.phone_number)) }}">Services</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

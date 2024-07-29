@@ -1,5 +1,6 @@
 import json
 from src.classes.owner import Owner
+from src.classes.pet import Pet
 
 
 class OwnerManagement:
@@ -100,3 +101,24 @@ class OwnerManagement:
                 self.owners = [Owner(owner_dict['name'], owner_dict['phone_number']) for owner_dict in owner_dicts]
         except FileNotFoundError:
             self.owners = []
+
+    def load_owner_pets(self, name, phone_number):
+        """
+        Load pets for a specific owner from the JSON file.
+
+        Args:
+        - name (str): Name of the owner.
+        - phone_number (str): Phone number of the owner.
+
+        Returns:
+        - List of Pet objects belonging to the owner.
+        """
+        try:
+            with open(self.filename, 'r') as file:
+                data = json.load(file)
+                for owner_data in data:
+                    if owner_data['name'] == name and owner_data['phone_number'] == phone_number:
+                        return owner_data['pets']
+        except FileNotFoundError:
+            pass
+        return []

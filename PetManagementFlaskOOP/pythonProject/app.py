@@ -38,7 +38,9 @@ def add_pet(pet_owner):
         pet_name = request.form['name'].strip()
         species = request.form['species'].strip()
         age = int(request.form['age'].strip())
-        vaccinated = bool(request.form['vaccinated'].strip())
+
+        vaccinated_str = request.form.get('vaccinated', '').strip().lower()
+        vaccinated = vaccinated_str in ['true', '1', 'yes']
 
         parts = pet_owner.split(',')
         name = parts[0].split(': ')[1].strip()
@@ -52,10 +54,17 @@ def add_pet(pet_owner):
     return render_template('add_pet.html', pet_owner=pet_owner)
 
 
-@app.route('/pets_list/<owner_phone_number>')
-def pets_list(owner_phone_number):
-    # Implement the logic to list pets for the owner
-    return f"List of pets for owner with phone number {owner_phone_number}"
+@app.route('/pets_list/<pet_owner>')
+def pets_list(pet_owner):
+    parts = pet_owner.split(',')
+    name = parts[0].split(': ')[1].strip()
+    phone = parts[1].split(': ')[1].strip()
+
+    owner = Owner(name, phone)
+    owner_management.load_owners()
+    pets = owner_management.load_owner_pets(name, phone)
+
+    return render_template('pet_page.html', owner=owner, pets=pets)
 
 
 if __name__ == '__main__':
