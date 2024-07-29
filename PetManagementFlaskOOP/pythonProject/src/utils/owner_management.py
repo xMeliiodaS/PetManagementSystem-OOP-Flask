@@ -1,5 +1,5 @@
 import json
-from pet_management.owner import Owner
+from src.classes.owner import Owner
 
 
 class OwnerManagement:

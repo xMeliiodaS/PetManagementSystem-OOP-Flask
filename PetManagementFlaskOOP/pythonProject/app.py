@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-from owner_management import OwnerManagement
-from pet_management.owner import Owner
+from src.utils.owner_management import OwnerManagement
+from src.classes.owner import Owner
 
 app = Flask(__name__)
 owner_management = OwnerManagement()
