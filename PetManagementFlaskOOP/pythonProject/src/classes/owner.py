@@ -19,6 +19,8 @@ class Owner:
     def add_pet(self, pet):
         if pet.is_vaccinated:
             self._pets.append(pet)
+        else:
+            raise "Can't add not vaccinated pet"
 
     def remove_pet(self, pet):
         if pet in self._pets:

@@ -48,13 +48,6 @@ class OwnerManagement:
         with open(self.filename, 'a') as file:
             json.dump([owner.to_dict() for owner in self.owners], file)
 
-    def save_pet(self, phone):
-        """
-        Save the current state of the library (books) to a JSON file.
-        """
-        with open(self.filename, 'w') as file:
-            json.dump([owner.to_dict() for owner in self.owners], file)
-
     def save_owner_pets(self, owner_phone_number):
         """
         Save pets for a specific owner to the JSON file.

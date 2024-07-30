@@ -37,7 +37,11 @@ def add_pet(pet_owner):
     if request.method == 'POST':
         pet_name = request.form['name'].strip()
         species = request.form['species'].strip()
-        age = int(request.form['age'].strip())
+
+        try:
+            age = int(request.form['age'].strip())
+        except ValueError:
+            raise "Wrong input"
 
         vaccinated_str = request.form.get('vaccinated', '').strip().lower()
         vaccinated = vaccinated_str in ['true', '1', 'yes']

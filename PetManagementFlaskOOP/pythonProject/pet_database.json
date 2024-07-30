@@ -49,6 +49,13 @@
                 "age": 324,
                 "owner": "Bahaa",
                 "is_vaccinated": true
+            },
+            {
+                "name": "qwd",
+                "species": "a",
+                "age": 238,
+                "owner": "Bahaa",
+                "is_vaccinated": false
             }
         ]
     },
@@ -67,6 +74,13 @@
                 "name": "weewew",
                 "species": "we",
                 "age": 3,
+                "owner": "Try",
+                "is_vaccinated": true
+            },
+            {
+                "name": "df",
+                "species": "dog",
+                "age": 28,
                 "owner": "Try",
                 "is_vaccinated": true
             }

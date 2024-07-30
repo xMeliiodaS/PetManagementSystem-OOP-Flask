@@ -1,7 +1,7 @@
 class Pet:
     total_pets = 0
 
-    def __init__(self, name: str, species: str, age: int, owner, vaccinated: bool):
+    def __init__(self, name: str, species, age: int, owner, vaccinated: bool):
         """
         Initializes a new Pet instance with the provided name,
          species, age, owner, and vaccination status. Increments the total_pets count.
@@ -44,20 +44,20 @@ class Pet:
         return self._species
 
     @species.setter
-    def species(self, value):
+    def species(self, species):
         """
         Sets the species of the pet. Raises ValueError if the species is empty or not a string.
         """
-        if not value and not isinstance(value, str):
+        if not species:
             raise ValueError("Species cannot be empty")
-        self._species = value
+        self._species = species
 
     @property
     def age(self):
         """
-        Gets the age of the pet.
+        Gets the age of the pet and converts the pet's age to human years (multiplies by 7).
         """
-        return self._age
+        return self._age * 7
 
     @age.setter
     def age(self, value):
@@ -109,13 +109,8 @@ class Pet:
         """
         Marks the pet as vaccinated.
         """
-        self.is_vaccinated = True
-
-    def human_age_to_pet(self):
-        """
-        Converts the pet's age to human years (multiplies by 7).
-        """
-        return self.age * 7
+        if not self._is_vaccinated:
+            self.is_vaccinated = True
 
     def __eq__(self, other):
         """
